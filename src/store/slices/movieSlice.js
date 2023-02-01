@@ -1,3 +1,5 @@
+/* use in component with 'use client' */
+
 const initState = {
   movies: [],
 };
