@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function About() {
+export default async function AboutMovie({ params }) {
   return (
     <div>
       <h1>About</h1>

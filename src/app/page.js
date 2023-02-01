@@ -1,19 +1,17 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-'use client';
+import { Movie } from 'src/components';
+import { getMovies } from 'src/services/movies';
 
-import { useEffect } from 'react';
-import { useAppStore } from 'src/store/store';
+export default async function Home() {
+  const movies = await getMovies();
 
-export default function Home() {
-  const getMovies = useAppStore((store) => store.getMovies);
-
-  useEffect(() => {
-    getMovies();
-  }, []);
+  const printMovies = (el) => (
+    <Movie key={el?.id} id={el?.id} title={el?.title} release={el?.release_date} poster={el?.backdrop_path} />
+  );
 
   return (
     <main>
-      <h1>Home</h1>
+      <h1>List of movies</h1>
+      {movies.map(printMovies)}
     </main>
   );
 }
